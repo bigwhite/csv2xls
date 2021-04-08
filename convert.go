@@ -165,17 +165,17 @@ func writeToExcelSheet(output string, records [][]string, col int64) error {
 		          }
 		      }`
 	/*
+	   properties example:
+
 	   "name": "Sheet1!$F$1",
 	   "categories": "Sheet1!$A$2:$A$7",
 	   "values": "Sheet1!$F$2:$F$7"
 	*/
-
 	category := records[0][col]
 	title := fmt.Sprintf("line chart for %s", category)
 	seriesName := fmt.Sprintf(`Sheet1!$%c$%d`, 'A'+col, col)
 	seriesCategories := fmt.Sprintf(`Sheet1!$A$2:$A$%d`, len(records))
 	seriesValues := fmt.Sprintf(`Sheet1!$%c$2:$%c$%d`, 'A'+col, 'A'+col, len(records))
-	//min,max := getMinAndMax(records, col)
 
 	properties := fmt.Sprintf(propertiesFmt, seriesName, seriesCategories, seriesValues, title)
 
@@ -190,9 +190,3 @@ func writeToExcelSheet(output string, records [][]string, col int64) error {
 
 	return nil
 }
-
-/*
-func getMinAndMax(records [][]string, col int64) (int, int) {
-
-}
-*/
