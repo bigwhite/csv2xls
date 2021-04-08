@@ -40,7 +40,7 @@ func main() {
 		*output = (*input)[:len(*input)-len(ext)] + xlsExt
 	}
 
-	err := doConvert(*input, *output)
+	err := doConvert(*input, *output, *col)
 	if err != nil {
 		panic(err)
 	}

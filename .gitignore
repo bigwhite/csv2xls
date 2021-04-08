@@ -1,4 +1,6 @@
 csv2xls
 *.swp
 *.csv
+*.xls
+*.xlsx
 
