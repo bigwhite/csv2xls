@@ -10,6 +10,7 @@ import (
 var (
 	input  = flag.String("i", "", "the name of csv file")
 	output = flag.String("o", "", "the name of xls file")
+	col    = flag.Int64("col", 1, "the column which we draw a chart based on, default: 1 (range 1-max)")
 )
 
 const (
@@ -24,6 +25,12 @@ func main() {
 
 	if *input == "" {
 		fmt.Fprintln(os.Stderr, "no input csv file specified. Use -i arg to specify input csv file")
+		Usage()
+		os.Exit(1)
+	}
+
+	if *col <= 0 {
+		fmt.Fprintln(os.Stderr, "col specified should be over 1. Use -col arg to specify the column")
 		Usage()
 		os.Exit(1)
 	}
